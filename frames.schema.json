@@ -1,0 +1,62 @@
+{
+    "title": "Frames",
+    "description": "List and structure of a Frames supported by the Autopilot",
+    "type": "object",
+
+    "$defs": {
+        "frame": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                
+                "type": {
+                    "enum": ["group", "frame"]
+                },
+                
+                "description": {
+                    "type": "string"
+                },
+                
+                "image": {
+                    "type": "string"
+                },
+                "frame_id": {
+                    "type": "integer"
+                },
+            },
+
+            "if": {
+                "properties": {"type": { "const": "group" } }
+            },
+            "then": {
+                "properties": {
+                    "subgroups": {
+                        "$ref": "#",
+                        "description": "Group of other frame / frame-groups"
+                    }
+                }
+            },
+
+            "required": ["name", "type", "frame_id"],
+        }
+    },
+
+    "frame_id": {
+        "description": "Description of how to map Frame ID to Autopilot specific interface",
+        "properties": {
+            "frame_id_parameter": {
+                "description": "Parameter name matching the Frame ID",
+                "type": "string"
+            }
+        }
+    },
+
+    "properties": {
+        "frames_v1": {
+            "description": "List of frames",
+            "type": "array",
+
+        }
+    }
+}
