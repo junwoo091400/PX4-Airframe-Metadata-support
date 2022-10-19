@@ -5,25 +5,36 @@
 
     "$defs": {
         "frame": {
+            "type": "object",
+            "description": "A group (could be a single frame) of frames",
+
             "properties": {
+                "type": {
+                    "enum": ["group", "frame"],
+                    "description": "Type of the frame object. If it's a group, it will include other group/frames in `subgroups` property"
+                },
                 "name": {
                     "type": "string"
                 },
-                
-                "type": {
-                    "enum": ["group", "frame"]
-                },
-                
                 "description": {
                     "type": "string"
                 },
-                
                 "image": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Link to the image of the frame"
+                },
+                "manufacturer": {
+                    "type": "string",
+                    "description": "Name of the manufacturer"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Link to the relevant material online about the frame"
                 },
                 "frame_id": {
-                    "type": "integer"
-                },
+                    "type": "integer",
+                    "description": "ID of the frame"
+                }
             },
 
             "if": {
@@ -32,31 +43,36 @@
             "then": {
                 "properties": {
                     "subgroups": {
-                        "$ref": "#",
-                        "description": "Group of other frame / frame-groups"
+                        "type": "array",
+                        "description": "Sub-group of other frame / frame-groups",
+                        "items": {
+                            "$ref": "#"
+                        }
                     }
                 }
             },
 
-            "required": ["name", "type", "frame_id"],
-        }
-    },
-
-    "frame_id": {
-        "description": "Description of how to map Frame ID to Autopilot specific interface",
-        "properties": {
-            "frame_id_parameter": {
-                "description": "Parameter name matching the Frame ID",
-                "type": "string"
-            }
+            "required": ["type", "name", "frame_id"]
         }
     },
 
     "properties": {
+        "frame_id": {
+            "description": "Description of how to map Frame ID to Autopilot specific interface",
+            "properties": {
+                "frame_id_parameter": {
+                    "description": "Parameter name matching the Frame ID",
+                    "type": "string"
+                }
+            }
+        },
+        
         "frames_v1": {
-            "description": "List of frames",
+            "description": "List of frames as defined in v1 spec",
             "type": "array",
-
+            "items": {
+                "$ref": "#/$defs/frame"
+            }
         }
     }
 }

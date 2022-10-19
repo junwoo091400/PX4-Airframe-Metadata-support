@@ -4,6 +4,14 @@ This repo will include:
 1. Test Qt App for visualization of the Frame selection UI for QGC
 2. Test Frame Json dataset to visualize
 
+## How to use
+
+### Frame JSON Metadata
+- Install https://www.npmjs.com/package/ajv-cli
+```bash
+# To validate the Json Schema
+ajv validate -s frames.schema.json -d frames.json --verbose
+```
 ## About Frame metadata
 
 MAVLink supports `Component Metadata` protocol that allows the Ground Control Station to fetch the system state information from the Flight Controller. Read more about it here: https://mavlink.io/en/services/component_information.html
