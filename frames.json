@@ -1,5 +1,9 @@
 {
 	"version": 1,
+	
+	"frame_id": {
+		"frame_id_parameter": "SYS_AUTOSTART"
+	},
 
 	"frames_v1": [
 		{
@@ -13,7 +17,7 @@
 					"type": "frame",
 					"description": "Generic multicopter with customizable number of rotors",
 					"image": "",
-					"sys_autostart_id": 1300
+					"frame_id": 1300
 				},
 				{
 					"name": "quadcopter",
@@ -28,7 +32,7 @@
 							"manufacturer": "Holybro",
 							"image": "assets/holybro_x500_v2.png",
 							"url": "http://www.holybro.com/product/x500-v2-kit/",
-							"sys_autostart_id": 1313
+							"frame_id": 1313
 						}
 					]
 				},
@@ -45,7 +49,7 @@
 							"manufacturer": "Yuneec",
 							"image": "assets/yuneec_h520e.png",
 							"url": "https://www.conrad.ch/de/p/yuneec-h520e-speccombo-hexacopter-rtf-profi-kameraflug-mit-waermebild-orange-schwarz-2450997.html",
-							"sys_autostart_id": 1254
+							"frame_id": 1254
 						},
 						{
 							"name": "Vector Hexacopter 2.2",
@@ -54,7 +58,7 @@
 							"manufacturer": "Vision Aerial",
 							"image": "assets/vision_vector_hexacopter.png",
 							"url": "https://visionaerial.com/product/vector-hexacopter/",
-							"sys_autostart_id": 1532
+							"frame_id": 1532
 						}
 					]
 				}
@@ -71,7 +75,7 @@
 					"type": "frame",
 					"description": "Generic fixed wing with customizable set of actuators",
 					"image": "",
-					"sys_autostart_id": 1592
+					"frame_id": 1592
 				},
 				{
 					"name": "plane a tail",
@@ -86,7 +90,7 @@
 							"manufacturer": "Applied Aeronautics",
 							"image": "assets/applied_aeronautics_albatross.png",
 							"url": "https://www.appliedaeronautics.com/albatross-uav",
-							"sys_autostart_id": 1212
+							"frame_id": 1212
 						}
 					]
 				},
@@ -103,7 +107,7 @@
 							"manufacturer": "",
 							"image": "assets/fixed_wing_flying_wing.png",
 							"url": "",
-							"sys_autostart_id": 1426
+							"frame_id": 1426
 						},
 						{
 							"name": "Wing wing (Z-84)",
@@ -112,7 +116,7 @@
 							"manufacturer": "Holybro",
 							"image": "assets/fixed_wing_wing_wing.png",
 							"url": "https://hobbyking.com/en_us/wing-wing-z-84-epo-845mm-kit.html?___store=en_us",
-							"sys_autostart_id": 1426
+							"frame_id": 1426
 						}
 					]
 				}
@@ -137,7 +141,7 @@
 							"manufacturer": "Holybro",
 							"image": "assets/holybro_x500_v2.png",
 							"url": "http://www.holybro.com/product/x500-v2-kit/",
-							"sys_autostart_id": 6435
+							"frame_id": 6435
 						}
 					]
 				},
@@ -154,7 +158,7 @@
 							"manufacturer": "",
 							"image": "assets/vtol_quad_tailsitter.png",
 							"url": "",
-							"sys_autostart_id": 5123
+							"frame_id": 5123
 						}
 					]
 				}
@@ -171,14 +175,14 @@
 					"type": "frame",
 					"description": "Generic helicopter with customizable set of actuators",
 					"image": "assets/helicopter.png",
-					"sys_autostart_id": 4212
+					"frame_id": 4212
 				},
 				{
 					"name": "coaxial helicopter",
 					"type": "frame",
 					"description": "Helicopter with coaxial rotor spinning in different directions",
 					"image": "assets/helicopter_coaxial.png",
-					"sys_autostart_id": 9374
+					"frame_id": 9374
 				}
 			]
 		},
@@ -193,14 +197,14 @@
 					"type": "frame",
 					"description": "SIH quadcopter",
 					"image": "assets/quadcopter.png",
-					"sys_autostart_id": 1523
+					"frame_id": 1523
 				},
 				{
 					"name": "sih fixed wing",
 					"type": "frame",
 					"description": "SIH fixed wing",
 					"image": "assets/fixed_wing.png",
-					"sys_autostart_id": 1523
+					"frame_id": 1523
 				}
 			]
 		}

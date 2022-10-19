@@ -1,4 +1,5 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema",
     "title": "Frames",
     "description": "List and structure of a Frames supported by the Autopilot",
     "type": "object",
@@ -38,7 +39,7 @@
             },
 
             "if": {
-                "properties": {"type": { "const": "group" } }
+                "properties": { "type": { "const": "group" } }
             },
             "then": {
                 "properties": {
@@ -46,18 +47,26 @@
                         "type": "array",
                         "description": "Sub-group of other frame / frame-groups",
                         "items": {
-                            "$ref": "#"
+                            "$ref": "#/$defs/frame"
                         }
                     }
-                }
+                },
+                "required": ["type", "name"]
             },
-
-            "required": ["type", "name", "frame_id"]
+            "else": {
+                "required": ["type", "name", "frame_id"]
+            }
         }
     },
 
     "properties": {
+        "version": {
+            "type": "integer",
+            "description": "Version of the Frames JSON Schema"
+        },
+
         "frame_id": {
+            "type": "object",
             "description": "Description of how to map Frame ID to Autopilot specific interface",
             "properties": {
                 "frame_id_parameter": {
@@ -66,10 +75,10 @@
                 }
             }
         },
-        
+
         "frames_v1": {
-            "description": "List of frames as defined in v1 spec",
             "type": "array",
+            "description": "List of frames as defined in v1 spec",
             "items": {
                 "$ref": "#/$defs/frame"
             }
