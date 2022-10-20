@@ -35,6 +35,13 @@
                 "frame_id": {
                     "type": "integer",
                     "description": "ID of the frame"
+                },
+                "subgroups": {
+                    "type": "array",
+                    "description": "Sub-group of other frame / frame-groups",
+                    "items": {
+                        "$ref": "#/$defs/frame"
+                    }
                 }
             },
 
@@ -42,20 +49,15 @@
                 "properties": { "type": { "const": "group" } }
             },
             "then": {
-                "properties": {
-                    "subgroups": {
-                        "type": "array",
-                        "description": "Sub-group of other frame / frame-groups",
-                        "items": {
-                            "$ref": "#/$defs/frame"
-                        }
-                    }
-                },
-                "required": ["type", "name"]
+                "required": ["subgroups"]
             },
             "else": {
-                "required": ["type", "name", "frame_id"]
-            }
+                "description": "For frame types, frame_id must be provided",
+                "required": ["frame_id"]
+            },
+
+            "required": ["type", "name"],
+            "additionalProperties": false
         }
     },
 
