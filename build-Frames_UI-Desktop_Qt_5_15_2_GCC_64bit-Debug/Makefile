@@ -52,9 +52,11 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Frames_UI/main.cpp qrc_qml.cpp \
+SOURCES       = ../Frames_UI/frames.cpp \
+		../Frames_UI/main.cpp qrc_qml.cpp \
 		qrc_qmake_qmake_qm_files.cpp
-OBJECTS       = main.o \
+OBJECTS       = frames.o \
+		main.o \
 		qrc_qml.o \
 		qrc_qmake_qmake_qm_files.o
 DIST          = ../../Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
@@ -267,7 +269,8 @@ DIST          = ../../Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.15.2/gcc_64/mkspecs/features/exceptions.prf \
 		../../Qt/5.15.2/gcc_64/mkspecs/features/yacc.prf \
 		../../Qt/5.15.2/gcc_64/mkspecs/features/lex.prf \
-		../Frames_UI/Frames_UI.pro  ../Frames_UI/main.cpp
+		../Frames_UI/Frames_UI.pro ../Frames_UI/frames.h ../Frames_UI/frames.cpp \
+		../Frames_UI/main.cpp
 QMAKE_TARGET  = Frames_UI
 DESTDIR       = 
 TARGET        = Frames_UI
@@ -723,7 +726,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../Frames_UI/Frames_UI_en_US.ts $(DISTDIR)/
 	$(COPY_FILE) --parents ../Frames_UI/qml.qrc qmake_qmake_qm_files.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Frames_UI/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Frames_UI/frames.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Frames_UI/frames.cpp ../Frames_UI/main.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Frames_UI/Frames_UI_en_US.ts $(DISTDIR)/
 
 
@@ -788,6 +792,53 @@ compiler_lex_clean:
 compiler_clean: compiler_lrelease_clean compiler_rcc_clean compiler_moc_predefs_clean 
 
 ####### Compile
+
+frames.o: ../Frames_UI/frames.cpp ../Frames_UI/frames.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/QList \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.15.2/gcc_64/include/QtCore/qstringmatcher.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frames.o ../Frames_UI/frames.cpp
 
 main.o: ../Frames_UI/main.cpp ../../Qt/5.15.2/gcc_64/include/QtGui/QGuiApplication \
 		../../Qt/5.15.2/gcc_64/include/QtGui/qguiapplication.h \
