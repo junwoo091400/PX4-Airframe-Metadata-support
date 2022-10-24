@@ -28,3 +28,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     frames.h
+
+DISTFILES += \
+    frames.json \
+    frames.schema.json

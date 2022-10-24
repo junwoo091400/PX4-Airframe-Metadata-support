@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>frames.json</file>
+        <file>frames.schema.json</file>
     </qresource>
 </RCC>
