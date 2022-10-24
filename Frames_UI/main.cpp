@@ -1,6 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QFile>
+#include <QJsonDocument>
+
+#include "frames.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,8 +20,17 @@ int main(int argc, char *argv[])
     QString json_data = file.readAll();
     file.close();
 
+    QJsonDocument _jsonMetadata;
+    _jsonMetadata = QJsonDocument::fromJson(json_data.toUtf8());
+
+    Frames_Root _frames;
+    _frames.parseJson(_jsonMetadata);
+
+    // Print out the info
+    _frames.print_info();
 
 
+    // Load the Application GUI
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
@@ -29,6 +41,5 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    qDebug() << "Hi!!";
     return app.exec();
 }
