@@ -7,7 +7,7 @@
         "-I",
         "/home/junwoo/Qt/Tools/QtCreator/share/qtcreator/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/tmp/QtCreator-duuBUh/clang-uiheader-vdntEi",
+        "/tmp/QtCreator-TtNLeY/clang-uiheader-dbalsd",
         "-nostdinc",
         "-nostdinc++",
         "-pipe",
@@ -45,7 +45,7 @@
         "-I",
         "/home/junwoo/Qt/5.15.2/gcc_64/include/QtCore",
         "-I",
-        "/home/junwoo/PX4-Airframe-Metadata-support/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug",
+        "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug",
         "-I",
         "/home/junwoo/Qt/5.15.2/gcc_64/mkspecs/linux-g++",
         "-isystem",
@@ -74,7 +74,7 @@
         "-Wno-documentation-unknown-command",
         "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/frames.cpp"
     ],
-    "directory": "/home/junwoo/PX4-Airframe-Metadata-support/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug/.qtc_clangd",
+    "directory": "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug/.qtc_clangd",
     "file": "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/frames.cpp"
 },
 {
@@ -85,7 +85,7 @@
         "-I",
         "/home/junwoo/Qt/Tools/QtCreator/share/qtcreator/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/tmp/QtCreator-duuBUh/clang-uiheader-vdntEi",
+        "/tmp/QtCreator-TtNLeY/clang-uiheader-dbalsd",
         "-nostdinc",
         "-nostdinc++",
         "-pipe",
@@ -123,7 +123,7 @@
         "-I",
         "/home/junwoo/Qt/5.15.2/gcc_64/include/QtCore",
         "-I",
-        "/home/junwoo/PX4-Airframe-Metadata-support/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug",
+        "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug",
         "-I",
         "/home/junwoo/Qt/5.15.2/gcc_64/mkspecs/linux-g++",
         "-isystem",
@@ -152,7 +152,7 @@
         "-Wno-documentation-unknown-command",
         "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/main.cpp"
     ],
-    "directory": "/home/junwoo/PX4-Airframe-Metadata-support/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug/.qtc_clangd",
+    "directory": "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug/.qtc_clangd",
     "file": "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/main.cpp"
 },
 {
@@ -163,7 +163,7 @@
         "-I",
         "/home/junwoo/Qt/Tools/QtCreator/share/qtcreator/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/tmp/QtCreator-duuBUh/clang-uiheader-vdntEi",
+        "/tmp/QtCreator-TtNLeY/clang-uiheader-dbalsd",
         "-nostdinc",
         "-nostdinc++",
         "-pipe",
@@ -201,7 +201,7 @@
         "-I",
         "/home/junwoo/Qt/5.15.2/gcc_64/include/QtCore",
         "-I",
-        "/home/junwoo/PX4-Airframe-Metadata-support/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug",
+        "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug",
         "-I",
         "/home/junwoo/Qt/5.15.2/gcc_64/mkspecs/linux-g++",
         "-isystem",
@@ -230,7 +230,7 @@
         "-Wno-documentation-unknown-command",
         "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/frames.h"
     ],
-    "directory": "/home/junwoo/PX4-Airframe-Metadata-support/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug/.qtc_clangd",
+    "directory": "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-Debug/.qtc_clangd",
     "file": "/home/junwoo/PX4-Airframe-Metadata-support/Frames_UI/frames.h"
 }
 ]
