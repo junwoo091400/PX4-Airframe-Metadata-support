@@ -7,12 +7,8 @@
 
 #include "frames.h"
 
-int main(int argc, char *argv[])
+void parseJson(Frames_Root *frames)
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
-
     // Frames testing code
     QString framesJsonFilePath = QString(":/frames.json");
 
@@ -25,12 +21,15 @@ int main(int argc, char *argv[])
     QJsonDocument _jsonMetadata;
     _jsonMetadata = QJsonDocument::fromJson(json_data.toUtf8());
 
-    Frames_Root _frames;
-    _frames.parseJson(_jsonMetadata);
+    frames->parseJson(_jsonMetadata);
+}
 
-    // Print out the info
-    _frames.print_info();
 
+int main(int argc, char *argv[])
+{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
 
     // Load the Application GUI
     QGuiApplication app(argc, argv);
@@ -41,8 +40,12 @@ int main(int argc, char *argv[])
     QQmlComponent component(&engine, url);
     QObject *object = component.create();
 
-    QObject *rect = object->findChild<QObject*>("rect");
-    if (rect) { rect->setProperty("margin", 10); }
+    // Find the frames_root object from the QML engine
+    Frames_Root *frames = object->findChild<Frames_Root*>("framesRoot");
+    if (frames != nullptr) {
+        parseJson(frames);
+        frames->print_info();
+    }
 
 //    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
 //                     &app, [url](QObject *obj, const QUrl &objUrl) {

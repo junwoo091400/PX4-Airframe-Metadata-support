@@ -12,8 +12,13 @@ RESOURCES += qml.qrc
 
 TRANSLATIONS += \
     Frames_UI_en_US.ts
+
 CONFIG += lrelease
 CONFIG += embed_translations
+CONFIG += qmltypes
+
+QML_IMPORT_NAME = frames_root
+QML_IMPORT_MAJOR_VERSION = 1
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

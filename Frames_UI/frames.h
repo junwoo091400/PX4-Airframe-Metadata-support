@@ -3,6 +3,8 @@
 
 #include <QList>
 #include <QJsonDocument>
+#include <QObject>
+#include <qqml.h>
 
 /**
  * @brief The Frames class defining either a group or a final frame object
@@ -55,10 +57,18 @@ private:
  * This includes the version information and other highest-level information contained in the
  * Frames.json file.
  */
-class Frames_Root
+class Frames_Root : public QObject
 {
+    Q_OBJECT
+
+    Q_PROPERTY(QList<Frames*>* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
+    Q_PROPERTY(QString frames_id_param_name READ frames_id_param_name NOTIFY frames_id_param_name_changed)
+
+    // Make this class available in QML
+    QML_ELEMENT
+
 public:
-    Frames_Root();
+    Frames_Root(QObject *parent = nullptr);
 
     /**
      * @brief Parse provided JsonDocument data struct
@@ -69,11 +79,27 @@ public:
 
     void print_info() const;
 
+    /**
+     * @brief Getter for the List of Frames to display
+     */
+    QList<Frames*>* selectedFrames() const { return _selectedFrames; }
+
+    QString frames_id_param_name() const { return _frames_id_param_name; }
+
+signals:
+     void selectedFramesChanged();
+     void frames_id_param_name_changed();
+
 private:
     /**
      * @brief List of `Frames`, which can contain other Frames in it's subgroup
      */
     QList<Frames*> _frames;
+
+    /**
+     * @brief Pointer to the frame list that user selected to view
+     */
+    QList<Frames*>* _selectedFrames;
 
     int _schema_version{0};
     QString _frames_id_param_name;

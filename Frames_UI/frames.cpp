@@ -101,9 +101,9 @@ void Frames::print_info() const
 }
 
 // Frames - Root
-Frames_Root::Frames_Root()
+Frames_Root::Frames_Root(QObject *parent)
 {
-
+    // Do nothing
 }
 
 
@@ -115,6 +115,7 @@ bool Frames_Root::parseJson(const QJsonDocument &json)
     QJsonValue frameIdJson = obj.value("frame_id").toObject().value("frame_id_parameter");
     if (!frameIdJson.isNull() && frameIdJson.isString()) {
         _frames_id_param_name = frameIdJson.toString();
+        emit frames_id_param_name_changed();
     } else {
         qWarning() << "Frames ID Parameter is not set!";
     }
