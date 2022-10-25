@@ -5,6 +5,28 @@
     "type": "object",
 
     "$defs": {
+        "imageTypes": {
+            "description": "Enum representing the image to show for the frame. Convention is to have capital letter on each new phrase",
+            "default": "Undefined",
+            "enum": [
+                "",
+                "Undefined",
+                "Simulation",
+                "Helicopter",
+                    "HelicopterCoaxial",
+                "Multirotor",
+                    "Quadrotor",
+                        "QuadrotorX", "QuadrotorH", "QuadrotorWide", 
+                    "Hexarotor",
+                "FixedWing",
+                    "FixedWingATail", "FixedWingFlyingWing",
+                "VTOL",
+                    "VTOLTiltrotor", "VTOLQuadrotorTailsitter",
+                "Boat",
+                "Rover",
+                "UUV"
+            ]
+        },
         "frame": {
             "type": "object",
             "description": "A group (could be a single frame) of frames",
@@ -21,8 +43,12 @@
                     "type": "string"
                 },
                 "image": {
+                    "$ref": "#/$defs/imageTypes",
+                    "description": "Generic enum value to show an appropriate frame image"
+                },
+                "image-custom": {
                     "type": "string",
-                    "description": "Link to the image of the frame"
+                    "description": "Custom image url to load. This will override the image indicated by the `image` property"
                 },
                 "manufacturer": {
                     "type": "string",
@@ -67,9 +93,9 @@
             "description": "Version of the Frames JSON Schema"
         },
 
-        "frame_id": {
+        "settings": {
             "type": "object",
-            "description": "Description of how to map Frame ID to Autopilot specific interface",
+            "description": "Common settings",
             "properties": {
                 "frame_id_parameter": {
                     "description": "Parameter name matching the Frame ID",
