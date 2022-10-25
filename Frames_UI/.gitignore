@@ -72,4 +72,4 @@ Thumbs.db
 *.exe
 
 # Build files
-build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-*/*
+*build-Frames_UI-Desktop_Qt_5_15_2_GCC_64bit-*/**
