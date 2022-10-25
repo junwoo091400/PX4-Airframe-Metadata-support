@@ -1,7 +1,7 @@
 {
 	"version": 1,
 	
-	"frame_id": {
+	"settings": {
 		"frame_id_parameter": "SYS_AUTOSTART"
 	},
 
@@ -10,7 +10,7 @@
 			"name": "multicopter",
 			"type": "group",
 			"description": "Rotary vehicles with multiple rotors to lift it's body",
-			"image": "assets/multicopter.png",
+			"image": "Multirotor",
 			"subgroups": [
 				{
 					"name": "generic multicopter",
@@ -23,14 +23,14 @@
 					"name": "quadcopter",
 					"type": "group",
 					"description": "Multicopters with 4 rotors",
-					"image": "assets/quadcopter.png",
+					"image": "Quadrotor",
 					"subgroups": [
 						{
 							"name": "Holybro X500 v2",
 							"type": "frame",
 							"description": "Holybro's X500 V2 frame kit",
 							"manufacturer": "Holybro",
-							"image": "assets/holybro_x500_v2.png",
+							"image-custom": "holybro_x500_v2",
 							"url": "http://www.holybro.com/product/x500-v2-kit/",
 							"frame_id": 1313
 						}
@@ -40,14 +40,14 @@
 					"name": "hexacopter",
 					"type": "group",
 					"description": "Multicopters with 6 rotors",
-					"image": "assets/hexacopter.png",
+					"image": "Hexarotor",
 					"subgroups": [
 						{
 							"name": "Yuneec H520E Hexacopter",
 							"type": "frame",
 							"description": "Yuneec H520E Hexacopter with a camera & landing gear",
 							"manufacturer": "Yuneec",
-							"image": "assets/yuneec_h520e.png",
+							"image-custom": "yuneec_h520e",
 							"url": "https://www.conrad.ch/de/p/yuneec-h520e-speccombo-hexacopter-rtf-profi-kameraflug-mit-waermebild-orange-schwarz-2450997.html",
 							"frame_id": 1254
 						},
@@ -56,7 +56,7 @@
 							"type": "frame",
 							"description": "Yuneec H520E Hexacopter with a camera & landing gear",
 							"manufacturer": "Vision Aerial",
-							"image": "assets/vision_vector_hexacopter.png",
+							"image-custom": "vision_vector_hexacopter",
 							"url": "https://visionaerial.com/product/vector-hexacopter/",
 							"frame_id": 1532
 						}
@@ -68,7 +68,7 @@
 			"name": "fixed wing",
 			"type": "group",
 			"description": "Aerial vehicles with fixed wing mounted to generate lift",
-			"image": "assets/fixed_wing.png",
+			"image": "FixedWing",
 			"subgroups": [
 				{
 					"name": "generic fixed wing",
@@ -81,14 +81,14 @@
 					"name": "plane a tail",
 					"type": "group",
 					"description": "Fixed wing with 2 ailerons, 2 flaps, a-tail, 2 a-tail actuators, throttle, wheel",
-					"image": "assets/fixed_wing_a_tail.png",
+					"image": "FixedWingATail",
 					"subgroups": [
 						{
 							"name": "Applied Aeronautics Albatross",
 							"type": "frame",
 							"description": "Applied Aeronautics Albatross Fixed Wing platform",
 							"manufacturer": "Applied Aeronautics",
-							"image": "assets/applied_aeronautics_albatross.png",
+							"image-custom": "applied_aeronautics_albatross",
 							"url": "https://www.appliedaeronautics.com/albatross-uav",
 							"frame_id": 1212
 						}
@@ -98,14 +98,14 @@
 					"name": "simple flying wing",
 					"type": "group",
 					"description": "Fixed-wing with 2 aileron and 1 throttle",
-					"image": "assets/fixed_wing_flying_wing.png",
+					"image": "FixedWingFlyingWing",
 					"subgroups": [
 						{
 							"name": "Generic flying wing",
 							"type": "frame",
 							"description": "Generic flying wing with customizable set of actuators",
 							"manufacturer": "",
-							"image": "assets/fixed_wing_flying_wing.png",
+							"image": "FixedWingFlyingWing",
 							"url": "",
 							"frame_id": 1426
 						},
@@ -114,7 +114,7 @@
 							"type": "frame",
 							"description": "Wing wing model",
 							"manufacturer": "Holybro",
-							"image": "assets/fixed_wing_wing_wing.png",
+							"image": "FixedWingFlyingWing",
 							"url": "https://hobbyking.com/en_us/wing-wing-z-84-epo-845mm-kit.html?___store=en_us",
 							"frame_id": 1426
 						}
@@ -126,20 +126,20 @@
 			"name": "vtol",
 			"type": "group",
 			"description": "Aerial vehicles with fixed wing and multicopter configuration combined",
-			"image": "assets/vtol.png",
+			"image": "VTOL",
 			"subgroups": [
 				{
 					"name": "tiltrotor vtol",
 					"type": "group",
 					"description": "VTOLs with tilting rotors",
-					"image": "assets/vtol_tiltrotor.png",
+					"image": "VTOLTiltrotor",
 					"subgroups": [
 						{
 							"name": "Holybro X500 v2",
 							"type": "frame",
 							"description": "Holybro's X500 V2 frame kit",
 							"manufacturer": "Holybro",
-							"image": "assets/holybro_x500_v2.png",
+							"image-custom": "holybro_x500_v2",
 							"url": "http://www.holybro.com/product/x500-v2-kit/",
 							"frame_id": 6435
 						}
@@ -149,14 +149,14 @@
 					"name": "quad tail-sitter vtol",
 					"type": "group",
 					"description": "VTOLs with quadcopter rotor configuration that sits on the tail when launching",
-					"image": "assets/vtol_quad_tailsitter.png",
+					"image": "VTOLQuadrotorTailsitter",
 					"subgroups": [
 						{
 							"name": "Generic Quadrotor X Tailsitter",
 							"type": "frame",
 							"description": "Generic Quadrotor tailsitter with rotors positioned in X configuration",
 							"manufacturer": "",
-							"image": "assets/vtol_quad_tailsitter.png",
+							"image": "VTOLQuadrotorTailsitter",
 							"url": "",
 							"frame_id": 5123
 						}
@@ -168,20 +168,20 @@
 			"name": "helicopter",
 			"type": "group",
 			"description": "Aerial vehicles with big rotor lifting the body",
-			"image": "assets/helicopter.png",
+			"image": "Helicopter",
 			"subgroups": [
 				{
 					"name": "generic helicopter",
 					"type": "frame",
 					"description": "Generic helicopter with customizable set of actuators",
-					"image": "assets/helicopter.png",
+					"image": "Helicopter",
 					"frame_id": 4212
 				},
 				{
 					"name": "coaxial helicopter",
 					"type": "frame",
 					"description": "Helicopter with coaxial rotor spinning in different directions",
-					"image": "assets/helicopter_coaxial.png",
+					"image": "HelicopterCoaxial",
 					"frame_id": 9374
 				}
 			]
@@ -190,20 +190,20 @@
 			"name": "simulation",
 			"type": "group",
 			"description": "SIH vehicle frames for running Simulation In Hardware",
-			"image": "assets/simulation.png",
+			"image": "Simulation",
 			"subgroups": [
 				{
 					"name": "sih quadcopter",
 					"type": "frame",
 					"description": "SIH quadcopter",
-					"image": "assets/quadcopter.png",
+					"image": "Quadrotor",
 					"frame_id": 1523
 				},
 				{
 					"name": "sih fixed wing",
 					"type": "frame",
 					"description": "SIH fixed wing",
-					"image": "assets/fixed_wing.png",
+					"image": "FixedWing",
 					"frame_id": 1523
 				}
 			]

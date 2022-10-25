@@ -112,7 +112,7 @@ bool Frames_Root::parseJson(const QJsonDocument &json)
     QJsonObject obj = json.object();
 
     // Get Frame ID Parameter
-    QJsonValue frameIdJson = obj.value("frame_id").toObject().value("frame_id_parameter");
+    QJsonValue frameIdJson = obj.value("settings").toObject().value("frame_id_parameter");
     if (!frameIdJson.isNull() && frameIdJson.isString()) {
         _frames_id_param_name = frameIdJson.toString();
         emit frames_id_param_name_changed();
