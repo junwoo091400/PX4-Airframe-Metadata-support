@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlComponent>
+#include <QQuickView>
 #include <QFile>
 #include <QJsonDocument>
 
@@ -32,14 +34,22 @@ int main(int argc, char *argv[])
 
     // Load the Application GUI
     QGuiApplication app(argc, argv);
+
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
+
+    QQmlComponent component(&engine, url);
+    QObject *object = component.create();
+
+    QObject *rect = object->findChild<QObject*>("rect");
+    if (rect) { rect->setProperty("margin", 10); }
+
+//    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+//                     &app, [url](QObject *obj, const QUrl &objUrl) {
+//        if (!obj && url == objUrl)
+//            QCoreApplication::exit(-1);
+//    }, Qt::QueuedConnection);
+//    engine.load(url);
 
     return app.exec();
 }
