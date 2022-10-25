@@ -106,7 +106,6 @@ Frames_Root::Frames_Root(QObject *parent)
     // Do nothing
 }
 
-
 bool Frames_Root::parseJson(const QJsonDocument &json)
 {
     QJsonObject obj = json.object();
@@ -158,4 +157,22 @@ void Frames_Root::print_info() const
             frame->print_info();
         }
     }
+}
+
+void Frames_Root::setSelectedFrames(QList<Frames*> const *frames)
+{
+    _selectedFrames = frames;
+    emit selectedFramesChanged();
+}
+
+bool Frames_Root::selectFrame(const Frames *frame)
+{
+    // Show available options in the selected frame group
+    if (!frame->_subgroups.isEmpty()) {
+        setSelectedFrames(&frame->_subgroups);
+    }
+
+    // User selected a final frame with no subgroups
+    // TODO: Process final selection
+    return true;
 }

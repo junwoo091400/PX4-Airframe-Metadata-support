@@ -44,7 +44,7 @@ Window {
 
         Repeater {
             id: framesRepeater
-            model: 25 //framesRoot.selectedFrames
+            model: framesRoot.selectedFrames
 
             // Single Frame/group view
             Rectangle {

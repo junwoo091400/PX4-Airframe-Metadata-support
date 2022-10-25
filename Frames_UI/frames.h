@@ -4,6 +4,7 @@
 #include <QList>
 #include <QJsonDocument>
 #include <QObject>
+#include <QVariantList>
 #include <qqml.h>
 
 /**
@@ -20,8 +21,23 @@ enum class FrameType {
 
 static constexpr int FRAME_ID_UNDEFINED = -1;
 
-class Frames
+class Frames : public QObject
 {
+    Q_OBJECT
+
+    // Basic properties
+    Q_PROPERTY(QString name READ getName NOTIFY nameChanged)
+    Q_PROPERTY(int frame_id READ getFrameid NOTIFY frameidChanged)
+
+    // Optional properties
+    Q_PROPERTY(QString image_url READ getImageurl NOTIFY imageurlChanged)
+    Q_PROPERTY(QString description READ getDescription NOTIFY descriptionChanged)
+    Q_PROPERTY(QString manufacturer READ getManufacturer NOTIFY manufacturerChanged)
+    Q_PROPERTY(QString product_url READ getProducturl NOTIFY producturlChanged)
+
+    // Make this class available in QML
+    QML_ELEMENT
+
 public:
     Frames();
 
@@ -34,6 +50,21 @@ public:
 
     void print_info() const;
 
+    QString getName() { return _name; }
+    int getFrameid() { return _frame_id; }
+    QString getImageurl() { return _imageUrl; }
+    QString getDescription() { return _description; }
+    QString getManufacturer() { return _manufacturer; }
+    QString getProducturl() { return _productUrl; }
+
+signals:
+    void nameChanged();
+    void frameidChanged();
+    void imageurlChanged();
+    void descriptionChanged();
+    void manufacturerChanged();
+    void producturlChanged();
+
 private:
     // Required properties
     FrameType _type{FrameType::FrameUndefined};
@@ -45,9 +76,12 @@ private:
 
     // Non-required properties
     QString _description;
-    QString _imageUrl;
+    QString _imageEnum;
+    QString _imageUrl; // this gets set by default via imageEnum, but can be overwritten by image-url in JSON
     QString _manufacturer;
     QString _productUrl;
+
+    friend class Frames_Root;
 };
 
 
@@ -61,7 +95,7 @@ class Frames_Root : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<Frames*>* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
+    Q_PROPERTY(QList<Frames*>* selectedFrames READ selectedFrames WRITE setSelectedFrames NOTIFY selectedFramesChanged)
     Q_PROPERTY(QString frames_id_param_name READ frames_id_param_name NOTIFY frames_id_param_name_changed)
 
     // Make this class available in QML
@@ -82,9 +116,16 @@ public:
     /**
      * @brief Getter for the List of Frames to display
      */
-    QList<Frames*>* selectedFrames() const { return _selectedFrames; }
+    QList<Frames*> const *selectedFrames() { return _selectedFrames; }
+
+    void setSelectedFrames(QList<Frames*> const *frames);
 
     QString frames_id_param_name() const { return _frames_id_param_name; }
+
+    /**
+     * @brief QML invokable function to process when user selects a frame
+     */
+    Q_INVOKABLE bool selectFrame(const Frames *frame);
 
 signals:
      void selectedFramesChanged();
@@ -99,7 +140,7 @@ private:
     /**
      * @brief Pointer to the frame list that user selected to view
      */
-    QList<Frames*>* _selectedFrames;
+    QList<Frames*> const *_selectedFrames;
 
     int _schema_version{0};
     QString _frames_id_param_name;
