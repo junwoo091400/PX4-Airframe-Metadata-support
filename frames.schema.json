@@ -44,11 +44,11 @@
                 },
                 "image": {
                     "$ref": "#/$defs/imageTypes",
-                    "description": "Generic enum value to show an appropriate frame image"
+                    "description": "Generic enum value to show an appropriate frame image. If empty, GCS should use the last valid `image` property of parent nodes"
                 },
                 "image-custom": {
                     "type": "string",
-                    "description": "Custom image url to load. This will override the image indicated by the `image` property"
+                    "description": "Custom image url to load. This will override the image indicated by the `image` property. If it's an invalid link, GCS should use `iamge` tag"
                 },
                 "manufacturer": {
                     "type": "string",
