@@ -4,9 +4,15 @@
 #include <QJsonArray>
 
 // Frames - Node
-Frames::Frames()
+Frames::Frames(Frames *parentItem)
+    :_parentFrame(parentItem)
 {
 
+}
+
+Frames::~Frames()
+{
+    qDeleteAll(_subgroups);
 }
 
 bool Frames::parseJson(const QJsonObject &json)
@@ -53,7 +59,7 @@ bool Frames::parseJson(const QJsonObject &json)
     // If it has a sub-group, parse them and append it to the list recursively
     QJsonArray subgroups = json.value("subgroups").toArray();
     for (const auto &&frameJson : subgroups) {
-        Frames *new_frame = new Frames();
+        Frames *new_frame = new Frames(this);
         QJsonObject frameObject = frameJson.toObject();
         new_frame->parseJson(frameObject);
         _subgroups.append(new_frame);
@@ -159,17 +165,17 @@ void Frames_Root::print_info() const
     }
 }
 
-void Frames_Root::setSelectedFrames(QList<Frames*> const *frames)
-{
-    _selectedFrames = frames;
-    emit selectedFramesChanged();
-}
+//void Frames_Root::setSelectedFrames(QList<Frames*> const *frames)
+//{
+//    _selectedFrames = frames;
+//    emit selectedFramesChanged();
+//}
 
 bool Frames_Root::selectFrame(const Frames *frame)
 {
     // Show available options in the selected frame group
     if (!frame->_subgroups.isEmpty()) {
-        setSelectedFrames(&frame->_subgroups);
+        _selectedFrames = &frame->_subgroups;
     }
 
     // User selected a final frame with no subgroups

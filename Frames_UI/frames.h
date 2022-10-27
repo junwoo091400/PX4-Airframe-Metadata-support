@@ -39,7 +39,8 @@ class Frames : public QObject
     QML_ELEMENT
 
 public:
-    Frames();
+    Frames(Frames *parentItem = nullptr);
+    ~Frames();
 
     /**
      * @brief Parse a single airframe object in the JsonDocument
@@ -66,11 +67,14 @@ signals:
     void producturlChanged();
 
 private:
+    // Parent Frames node
+    Frames *_parentFrame;
+
     // Required properties
     FrameType _type{FrameType::FrameUndefined};
     QString _name;
 
-    // Required for `FrameType::FrameGroup`
+    // Required for Frame group (that holds many different sub-frames)
     QList<Frames*> _subgroups;
     int _frame_id{FRAME_ID_UNDEFINED};
 
@@ -95,7 +99,7 @@ class Frames_Root : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<Frames*>* selectedFrames READ selectedFrames WRITE setSelectedFrames NOTIFY selectedFramesChanged)
+    Q_PROPERTY(QList<Frames*>* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
     Q_PROPERTY(QString frames_id_param_name READ frames_id_param_name NOTIFY frames_id_param_name_changed)
 
     // Make this class available in QML
@@ -118,7 +122,7 @@ public:
      */
     QList<Frames*> const *selectedFrames() { return _selectedFrames; }
 
-    void setSelectedFrames(QList<Frames*> const *frames);
+//    void setSelectedFrames(QList<Frames*> const *frames);
 
     QString frames_id_param_name() const { return _frames_id_param_name; }
 
