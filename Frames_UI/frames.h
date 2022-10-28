@@ -49,7 +49,7 @@ public:
      */
     bool parseJson(const QJsonObject &json);
 
-    void print_info() const;
+    void print_info(QString prefix = "") const;
 
     QString getName() { return _name; }
     int getFrameid() { return _frame_id; }

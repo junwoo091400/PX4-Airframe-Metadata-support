@@ -41,8 +41,9 @@ int main(int argc, char *argv[])
     QQmlComponent component(&engine, url);
     QObject *object = component.create();
 
-    // Find the frames_root object from the QML engine
+    // Find the FrameComponent object from the QML engine
     FrameComponent *frames = object->findChild<FrameComponent*>("frameComponent");
+
     if (frames != nullptr) {
         parseJson(frames);
         frames->print_info();

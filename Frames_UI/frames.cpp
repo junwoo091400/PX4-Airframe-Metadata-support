@@ -31,8 +31,16 @@ bool Frames::parseJson(const QJsonObject &json)
     QString type = json.value("type").toString();
     if (type.isNull()) {
         qWarning() << "Type is undefined for airframe: " << _name;
+
+    } else if (type == "group") {
+        _type = FrameType::FrameGroup;
+
+    } else if (type == "frame") {
+        _type = FrameType::FrameEndNode;
+
     } else {
-        _name = type;
+        _type = FrameType::FrameUndefined;
+
     }
 
     // Non-required properties
@@ -68,40 +76,40 @@ bool Frames::parseJson(const QJsonObject &json)
     return true;
 }
 
-void Frames::print_info() const
+void Frames::print_info(QString prefix) const
 {
     QString str = "";
 
     // Required values
-    str.append(QString("name: %1, type: %2\n").arg(_name, QString::number((int)_type)));
+    str.append(QString("name: %1, type: %2 | ").arg(_name, QString::number((int)_type)));
 
     // Non-required values
     if (!_description.isEmpty()) {
-        str.append(QString("description: %1\n").arg(_description));
+        str.append(QString("description: %1 | ").arg(_description));
     }
 
     if (!_imageUrl.isEmpty()) {
-        str.append(QString("image URL: %1\n").arg(_imageUrl));
+        str.append(QString("image URL: %1 | ").arg(_imageUrl));
     }
 
     if (!_manufacturer.isEmpty()) {
-        str.append(QString("manufacturer: %1\n").arg(_manufacturer));
+        str.append(QString("manufacturer: %1 | ").arg(_manufacturer));
     }
 
     if (!_productUrl.isEmpty()) {
-        str.append(QString("Product URL: %1\n").arg(_productUrl));
+        str.append(QString("Product URL: %1").arg(_productUrl));
     }
 
-    qDebug() << str;
+    qDebug() << prefix + str;
 
     // Print out subgroups info
     if (!_subgroups.isEmpty()) {
-        // str.append(QString("Subgroups size: %1\n").arg(QString(_subgroups.length())));
-        qDebug() << QString("Subgroups size: %1\n").arg(QString::number(_subgroups.length()));
+        qDebug() << prefix + QString("Subgroups size: %1").arg(QString::number(_subgroups.length()));
 
         // Recursively call subgroup frame's print_info
         for (const auto &frame : _subgroups) {
-            frame->print_info();
+            // Enlongate the prefix with "--"
+            frame->print_info(prefix.append("--"));
         }
     }
 }

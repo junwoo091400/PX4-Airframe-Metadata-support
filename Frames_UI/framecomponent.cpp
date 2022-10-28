@@ -40,6 +40,9 @@ bool FrameComponent::parseJson(const QJsonDocument &json)
         _frames.append(new_frame);
     }
 
+    // for now, set the selected frames as frames itself!
+    setSelectedFrames(&_frames);
+
     return true;
 }
 
@@ -48,33 +51,34 @@ void FrameComponent::print_info() const
     QString str = "";
 
     // Required values
-    str.append(QString("Schema ver: %1, Frames ID Param name: %2\n").arg(QString::number(_schema_version), _frames_id_param_name));
-    str.append(QString("Framegroups size: %1\n").arg(QString::number(_frames.length())));
+    str.append(QString("Schema ver: %1 | Frames ID Param name: %2 | ").arg(QString::number(_schema_version), _frames_id_param_name));
+    str.append(QString("Framegroups size: %1").arg(QString::number(_frames.length())));
 
     qDebug() << str;
 
     // Print out frames info
     if (!_frames.isEmpty()) {
         for (const auto &frame : _frames) {
-            frame->print_info();
+            // Indent for each different frame categories
+            frame->print_info("L-");
         }
     }
 }
 
-//void FrameComponent::setSelectedFrames(QList<Frames*> const *frames)
-//{
-//    _selectedFrames = frames;
-//    emit selectedFramesChanged();
-//}
+void FrameComponent::setSelectedFrames(QList<Frames*>* frames)
+{
+    _selectedFrames = frames;
+    emit selectedFramesChanged();
+}
 
-//bool FrameComponent::selectFrame(const Frames *frame)
-//{
-//    // Show available options in the selected frame group
-//    if (!frame->_subgroups.isEmpty()) {
-//        _selectedFrames = &frame->_subgroups;
-//    }
+bool FrameComponent::selectFrame(Frames *frame)
+{
+    // Show available options in the selected frame group
+    if (!frame->_subgroups.isEmpty()) {
+        _selectedFrames = &frame->_subgroups;
+    }
 
-//    // User selected a final frame with no subgroups
-//    // TODO: Process final selection
-//    return true;
-//}
+    // User selected a final frame with no subgroups
+    // TODO: Process final selection
+    return true;
+}
