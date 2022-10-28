@@ -18,9 +18,9 @@ Window {
     property real _boxSpacing: _defaultFontPixelWidth
 
     // Module that has objectified json data
-    Frames_Root {
-        id: framesRoot
-        objectName: "framesRoot"
+    FrameComponent {
+        id: frameComponent
+        objectName: "frameComponent"
     }
 
     // Background Color
@@ -32,7 +32,7 @@ Window {
 
     Text {
         id: framesParamName
-        text: framesRoot.frames_id_param_name
+        text: frameComponent.frames_id_param_name
     }
 
     // Frames collage view
@@ -44,7 +44,7 @@ Window {
 
         Repeater {
             id: framesRepeater
-            model: framesRoot.selectedFrames
+            model: 25//frameComponent.selectedFrames
 
             // Single Frame/group view
             Rectangle {

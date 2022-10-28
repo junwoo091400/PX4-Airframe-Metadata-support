@@ -8,9 +8,9 @@
 #include <qqml.h>
 
 /**
- * @brief The Frames class defining either a group or a final frame object
+ * @brief The Frames class defining a single frame (could be a group)
  *
- * Class properties follow the schema defined in the `frames.schema.json`.
+ * Class properties follow the Frame schema defined in the `frames.schema.json`.
  */
 
 enum class FrameType {
@@ -85,69 +85,7 @@ private:
     QString _manufacturer;
     QString _productUrl;
 
-    friend class Frames_Root;
-};
-
-
-/**
- * @brief The Frames_Root class defining the root level frames definition of the JSON
- *
- * This includes the version information and other highest-level information contained in the
- * Frames.json file.
- */
-class Frames_Root : public QObject
-{
-    Q_OBJECT
-
-    Q_PROPERTY(QList<Frames*>* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
-    Q_PROPERTY(QString frames_id_param_name READ frames_id_param_name NOTIFY frames_id_param_name_changed)
-
-    // Make this class available in QML
-    QML_ELEMENT
-
-public:
-    Frames_Root(QObject *parent = nullptr);
-
-    /**
-     * @brief Parse provided JsonDocument data struct
-     *
-     * Schema is defined in `frames.schema.json`
-     */
-    bool parseJson(const QJsonDocument &json);
-
-    void print_info() const;
-
-    /**
-     * @brief Getter for the List of Frames to display
-     */
-    QList<Frames*> const *selectedFrames() { return _selectedFrames; }
-
-//    void setSelectedFrames(QList<Frames*> const *frames);
-
-    QString frames_id_param_name() const { return _frames_id_param_name; }
-
-    /**
-     * @brief QML invokable function to process when user selects a frame
-     */
-    Q_INVOKABLE bool selectFrame(const Frames *frame);
-
-signals:
-     void selectedFramesChanged();
-     void frames_id_param_name_changed();
-
-private:
-    /**
-     * @brief List of `Frames`, which can contain other Frames in it's subgroup
-     */
-    QList<Frames*> _frames;
-
-    /**
-     * @brief Pointer to the frame list that user selected to view
-     */
-    QList<Frames*> const *_selectedFrames;
-
-    int _schema_version{0};
-    QString _frames_id_param_name;
+    friend class FrameComponent;
 };
 
 #endif // FRAMES_H

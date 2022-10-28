@@ -6,8 +6,9 @@
 #include <QJsonDocument>
 
 #include "frames.h"
+#include "framecomponent.h"
 
-void parseJson(Frames_Root *frames)
+void parseJson(FrameComponent *frames)
 {
     // Frames testing code
     QString framesJsonFilePath = QString(":/frames.json");
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     QObject *object = component.create();
 
     // Find the frames_root object from the QML engine
-    Frames_Root *frames = object->findChild<Frames_Root*>("framesRoot");
+    FrameComponent *frames = object->findChild<FrameComponent*>("frameComponent");
     if (frames != nullptr) {
         parseJson(frames);
         frames->print_info();
