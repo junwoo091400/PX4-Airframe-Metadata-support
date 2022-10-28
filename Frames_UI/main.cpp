@@ -47,6 +47,9 @@ int main(int argc, char *argv[])
     if (frames != nullptr) {
         parseJson(frames);
         frames->print_info();
+
+    } else {
+        qDebug() << "frameComponent object not found!!";
     }
 
 //    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

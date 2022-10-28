@@ -5,6 +5,7 @@ QT += quick
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        dataobjectmodel.cpp \
         framecomponent.cpp \
         frames.cpp \
         main.cpp
@@ -18,7 +19,7 @@ CONFIG += lrelease
 CONFIG += embed_translations
 CONFIG += qmltypes
 
-QML_IMPORT_NAME = frames_root
+QML_IMPORT_NAME = FrameComponent
 QML_IMPORT_MAJOR_VERSION = 1
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -33,6 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    dataobjectmodel.h \
     framecomponent.h \
     frames.h
 

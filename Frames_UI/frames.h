@@ -5,7 +5,6 @@
 #include <QJsonDocument>
 #include <QObject>
 #include <QVariantList>
-#include <qqml.h>
 
 /**
  * @brief The Frames class defining a single frame (could be a group)
@@ -35,11 +34,17 @@ class Frames : public QObject
     Q_PROPERTY(QString manufacturer READ getManufacturer NOTIFY manufacturerChanged)
     Q_PROPERTY(QString product_url READ getProducturl NOTIFY producturlChanged)
 
-    // Make this class available in QML
-    QML_ELEMENT
-
 public:
-    Frames(Frames *parentItem = nullptr);
+    /**
+     * @brief Constructor
+     *
+     * Note: This had to be added, since the `Frames` class needs to be compatible
+     * to `QObject` in a sense of data handling at the `DataObjectModel` level.
+     *
+     * @param parent Generic QObject parent item needed to store this in `DataObjectModel`
+     * @param parent_frame Parent Frame Group that this frame belongs to
+     */
+    Frames(QObject* parent, Frames* parent_frame = nullptr);
     ~Frames();
 
     /**

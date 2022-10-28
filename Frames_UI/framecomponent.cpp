@@ -3,7 +3,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-FrameComponent::FrameComponent(QObject *parent)
+FrameComponent::FrameComponent()
 {
     // Do nothing
 }
@@ -34,14 +34,14 @@ bool FrameComponent::parseJson(const QJsonDocument &json)
     QJsonArray framesArray = framesJson.toArray();
 
     for (const auto &&frameJson : framesArray) {
-        Frames *new_frame = new Frames();
+        Frames *new_frame = new Frames(this);
         QJsonObject frameObject = frameJson.toObject();
         new_frame->parseJson(frameObject);
         _frames.append(new_frame);
     }
 
     // for now, set the selected frames as frames itself!
-    setSelectedFrames(&_frames);
+    setSelectedFrames(_frames);
 
     return true;
 }
@@ -65,9 +65,21 @@ void FrameComponent::print_info() const
     }
 }
 
-void FrameComponent::setSelectedFrames(QList<Frames*>* frames)
+void FrameComponent::setSelectedFrames(QList<Frames*> frames)
 {
-    _selectedFrames = frames;
+    qDebug() << "setSelectedFrames() called: " << frames;
+
+    // This doesn't work currently due to error: `Can't convert QList<Frames*> to QList<QObject*>`
+    //_selectedFrames->setDataDirect(*frames);
+
+    // First clear the data
+    _selectedFrames->clear();
+
+    // Workaround: go through the list and append the frames
+    for (auto frame : frames) {
+        _selectedFrames->append(frame);
+    }
+
     emit selectedFramesChanged();
 }
 
@@ -75,7 +87,8 @@ bool FrameComponent::selectFrame(Frames *frame)
 {
     // Show available options in the selected frame group
     if (!frame->_subgroups.isEmpty()) {
-        _selectedFrames = &frame->_subgroups;
+        setSelectedFrames(frame->_subgroups);
+        //_selectedFrames->setDataDirect(frame->_subgroups);
     }
 
     // User selected a final frame with no subgroups

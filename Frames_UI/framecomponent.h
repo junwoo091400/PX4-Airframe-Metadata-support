@@ -3,8 +3,10 @@
 
 #include <QObject>
 #include <qqml.h>
+#include <QAbstractListModel>
 
 #include "frames.h"
+#include "dataobjectmodel.h"
 
 /**
  * @brief The FrameComponent class is objectified version of the frames JSON file
@@ -16,14 +18,14 @@ class FrameComponent : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<Frames*>* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
+    Q_PROPERTY(DataObjectModel* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
     Q_PROPERTY(QString frames_id_param_name READ frames_id_param_name NOTIFY frames_id_param_name_changed)
 
     // Make this class available in QML
-    QML_ELEMENT
+    QML_NAMED_ELEMENT(FrameComponent)
 
 public:
-    FrameComponent(QObject *parent = nullptr);
+    FrameComponent();
 
     /**
      * @brief Parse provided JsonDocument data struct
@@ -37,12 +39,12 @@ public:
     /**
      * @brief Getter for the List of Frames to display
      */
-    QList<Frames*>* selectedFrames() { return _selectedFrames; }
+    DataObjectModel* selectedFrames() { return _selectedFrames; }
 
     /**
      * @brief Setter for the list of frames to display
      */
-    void setSelectedFrames(QList<Frames*>* frames);
+    void setSelectedFrames(QList<Frames*> frames);
 
     /**
      * @brief Getter for the parameter name corresponding to the Frame ID
@@ -67,9 +69,9 @@ private:
     QList<Frames*> _frames;
 
     /**
-     * @brief Pointer to the frame list that user selected to view
+     * @brief DataObjectModel containing the frame list that user selected to view
      */
-    QList<Frames*>*_selectedFrames;
+    DataObjectModel* _selectedFrames = new DataObjectModel(this);
 
     int _schema_version{0};
     QString _frames_id_param_name;
