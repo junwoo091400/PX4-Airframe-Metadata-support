@@ -4,53 +4,49 @@
         <file>frames.json</file>
         <file>frames.schema.json</file>
         <file>images/AirframeComponentIcon.png</file>
-        <file>images/AirframeSimulation.svg</file>
         <file>images/AirframeUnknown.svg</file>
         <file>images/Airship.svg</file>
-        <file>images/APMode.svg</file>
-        <file>images/ArrowCCW.svg</file>
-        <file>images/ArrowCW.svg</file>
-        <file>images/ArrowDirection.svg</file>
         <file>images/Autogyro.svg</file>
         <file>images/Boat.svg</file>
-        <file>images/CameraComponentIcon.png</file>
-        <file>images/FlightModesComponentIcon.png</file>
-        <file>images/FlyingWing.svg</file>
         <file>images/Helicopter.svg</file>
         <file>images/HelicopterCoaxial.svg</file>
         <file>images/HexaRotorPlus.svg</file>
         <file>images/HexaRotorX.svg</file>
-        <file>images/MotorComponentIcon.svg</file>
         <file>images/OctoRotorPlus.svg</file>
         <file>images/OctoRotorPlusCoaxial.svg</file>
         <file>images/OctoRotorX.svg</file>
         <file>images/OctoRotorXCoaxial.svg</file>
         <file>images/Plane.svg</file>
-        <file>images/PlaneATail.svg</file>
         <file>images/PlaneVTail.svg</file>
-        <file>images/PowerComponentIcon.png</file>
         <file>images/QuadRotorATail.svg</file>
         <file>images/QuadRotorH.svg</file>
         <file>images/QuadRotorPlus.svg</file>
         <file>images/QuadRotorVTail.svg</file>
         <file>images/QuadRotorWide.svg</file>
         <file>images/QuadRotorX.svg</file>
-        <file>images/RadioComponentIcon.png</file>
         <file>images/Rover.svg</file>
-        <file>images/SafetyComponentIcon.png</file>
-        <file>images/SensorsComponentIcon.png</file>
-        <file>images/StationMode.svg</file>
-        <file>images/TuningComponentIcon.png</file>
         <file>images/Vectored6DofUUV.svg</file>
         <file>images/VTOLDuoRotorTailSitter.svg</file>
         <file>images/VTOLPlane.svg</file>
         <file>images/VTOLPlaneOcto.svg</file>
         <file>images/VTOLQuadRotorTailSitter.svg</file>
         <file>images/VTOLTiltRotor.svg</file>
-        <file>images/wifi.svg</file>
         <file>images/Y6A.svg</file>
         <file>images/Y6B.svg</file>
         <file>images/YMinus.svg</file>
         <file>images/YPlus.svg</file>
+        <file>Frame.qml</file>
+        <file>images/convergence-vtol.jpg</file>
+        <file>images/FixedWing.svg</file>
+        <file>images/FixedWingATail.svg</file>
+        <file>images/FixedWingFlyingWing.svg</file>
+        <file>images/HexaRotor.svg</file>
+        <file>images/holybro_x500_v2.jpg</file>
+        <file>images/Multirotor.svg</file>
+        <file>images/QuadRotor.svg</file>
+        <file>images/Simulation.svg</file>
+        <file>images/VTOL.svg</file>
+        <file>images/VTOLQuadrotorTailsitter.svg</file>
+        <file>images/VTOLTiltrotor.svg</file>
     </qresource>
 </RCC>

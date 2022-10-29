@@ -135,12 +135,12 @@
 					"image": "VTOLTiltrotor",
 					"subgroups": [
 						{
-							"name": "Holybro X500 v2",
+							"name": "Convergence VTOL",
 							"type": "frame",
-							"description": "Holybro's X500 V2 frame kit",
-							"manufacturer": "Holybro",
-							"image-custom": "holybro_x500_v2",
-							"url": "http://www.holybro.com/product/x500-v2-kit/",
+							"description": "Famous Convergence VTOL!",
+							"manufacturer": "E-flite",
+							"image-custom": "convergence-vtol",
+							"url": "https://www.horizonhobby.com/product/convergence-vtol-bnf-basic-650mm/EFL11050.html",
 							"frame_id": 6435
 						}
 					]
