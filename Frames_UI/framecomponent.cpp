@@ -4,7 +4,7 @@
 #include <QJsonArray>
 
 FrameComponent::FrameComponent(QObject *parent)
-    :Frames(parent, this)
+    :Frames(parent, nullptr)
 {
     // Since we are the root frame group, we set parent_frame pointer to `nullpter`.
     qDebug() << "FrameComponent constructor: " << parent;
@@ -37,6 +37,7 @@ bool FrameComponent::parseJson(const QJsonDocument &json)
     QJsonArray framesArray = framesJson.toArray();
 
     for (const auto &&frameJson : framesArray) {
+        // Set the `FrameComponent` as parent of subgroup Frames
         Frames *new_frame = new Frames(this, this);
         QJsonObject frameObject = frameJson.toObject();
         new_frame->parseJson(frameObject);
