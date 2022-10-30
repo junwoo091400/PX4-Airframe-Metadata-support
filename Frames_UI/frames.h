@@ -44,7 +44,7 @@ public:
      * @param parent Generic QObject parent item needed to store this in `DataObjectModel`
      * @param parent_frame Parent Frame Group that this frame belongs to
      */
-    Frames(QObject* parent, Frames* parent_frame = nullptr);
+    Frames(QObject* parent, Frames* parent_frame);
     ~Frames();
 
     /**
@@ -73,7 +73,7 @@ signals:
 
 private:
     // Parent Frames node
-    Frames *_parentFrame;
+    Frames *_parentFrame{nullptr};
 
     // Required properties
     FrameType _type{FrameType::FrameUndefined};

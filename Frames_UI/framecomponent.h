@@ -4,6 +4,7 @@
 #include <QObject>
 #include <qqml.h>
 #include <QAbstractListModel>
+#include <QModelIndex>
 
 #include "frames.h"
 #include "dataobjectmodel.h"
@@ -14,7 +15,7 @@
  * This includes the version information and other highest-level information contained in the
  * Frames.json file.
  */
-class FrameComponent : public QObject
+class FrameComponent : public Frames
 {
     Q_OBJECT
 
@@ -25,7 +26,7 @@ class FrameComponent : public QObject
     QML_NAMED_ELEMENT(FrameComponent)
 
 public:
-    FrameComponent();
+    FrameComponent(QObject *parent = nullptr);
 
     /**
      * @brief Parse provided JsonDocument data struct
@@ -58,15 +59,20 @@ public:
      */
     Q_INVOKABLE bool selectFrame(Frames *frame);
 
+    /**
+     * @brief Changes `_selectedFrames` to track parent frame group (if it exists)
+     */
+    Q_INVOKABLE bool gotoParentFrame();
+
 signals:
      void selectedFramesChanged();
      void frames_id_param_name_changed();
 
 private:
-    /**
-     * @brief List of `Frames`, which can contain other Frames in it's subgroup
-     */
-    QList<Frames*> _frames;
+//    /**
+//     * @brief List of `Frames`, which can contain other Frames in it's subgroup
+//     */
+    // QList<Frames*> _frames;
 
     /**
      * @brief DataObjectModel containing the frame list that user selected to view

@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 
 import FrameComponent 1.0
 
@@ -35,6 +36,16 @@ Window {
         text: frameComponent.frames_id_param_name
     }
 
+    Button {
+        id: gotoParentButton
+        anchors.left: framesParamName.right
+
+        text: "Go to parent"
+        onClicked: {
+            frameComponent.gotoParentFrame();
+        }
+    }
+
     // Frames collage view
     Flow {
         id: framesCollageView
@@ -48,6 +59,13 @@ Window {
 
             Frame {
                 frame: modelData
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        frameComponent.selectFrame(modelData)
+                    }
+                }
             }
         }
 

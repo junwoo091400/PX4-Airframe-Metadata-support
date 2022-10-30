@@ -3,8 +3,11 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-FrameComponent::FrameComponent()
+FrameComponent::FrameComponent(QObject *parent)
+    :Frames(parent, this)
 {
+    // Since we are the root frame group, we set parent_frame pointer to `nullpter`.
+    qDebug() << "FrameComponent constructor: " << parent;
     // Do nothing
 }
 
@@ -34,14 +37,14 @@ bool FrameComponent::parseJson(const QJsonDocument &json)
     QJsonArray framesArray = framesJson.toArray();
 
     for (const auto &&frameJson : framesArray) {
-        Frames *new_frame = new Frames(this);
+        Frames *new_frame = new Frames(this, this);
         QJsonObject frameObject = frameJson.toObject();
         new_frame->parseJson(frameObject);
-        _frames.append(new_frame);
+        _subgroups.append(new_frame);
     }
 
     // for now, set the selected frames as frames itself!
-    setSelectedFrames(_frames);
+    setSelectedFrames(_subgroups);
 
     return true;
 }
@@ -52,13 +55,13 @@ void FrameComponent::print_info() const
 
     // Required values
     str.append(QString("Schema ver: %1 | Frames ID Param name: %2 | ").arg(QString::number(_schema_version), _frames_id_param_name));
-    str.append(QString("Framegroups size: %1").arg(QString::number(_frames.length())));
+    str.append(QString("Framegroups size: %1").arg(QString::number(_subgroups.length())));
 
     qDebug() << str;
 
     // Print out frames info
-    if (!_frames.isEmpty()) {
-        for (const auto &frame : _frames) {
+    if (!_subgroups.isEmpty()) {
+        for (const auto &frame : _subgroups) {
             // Indent for each different frame categories
             frame->print_info("L-");
         }
@@ -85,6 +88,7 @@ void FrameComponent::setSelectedFrames(QList<Frames*> frames)
 
 bool FrameComponent::selectFrame(Frames *frame)
 {
+    qDebug() << "selectFrame() called: " << frame;
     // Show available options in the selected frame group
     if (!frame->_subgroups.isEmpty()) {
         setSelectedFrames(frame->_subgroups);
@@ -93,5 +97,38 @@ bool FrameComponent::selectFrame(Frames *frame)
 
     // User selected a final frame with no subgroups
     // TODO: Process final selection
+    return true;
+}
+
+bool FrameComponent::gotoParentFrame()
+{
+    // Do we have a valid set of selected Frames?
+    if (_selectedFrames->count() >= 0) {
+        const QModelIndex idx = _selectedFrames->index(0);
+        QVariant data = _selectedFrames->data(idx);
+
+        qDebug() << data;
+
+        Frames *frame = static_cast<Frames*>(data.value<QObject*>());
+        qDebug() << frame;
+
+        if (frame != nullptr) {
+            Frames *parentframe = frame->_parentFrame;
+            qDebug() << parentframe;
+
+            if (parentframe != nullptr) {
+                // Debug
+                //parentframe->print_info("**");
+
+                Frames *parentparentframe = parentframe->_parentFrame;
+                qDebug() << parentparentframe;
+
+                if (parentparentframe != nullptr) {
+                    selectFrame(parentparentframe);
+                }
+            }
+        }
+    }
+
     return true;
 }

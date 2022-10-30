@@ -10,13 +10,6 @@ Rectangle {
     width: _boxWidth; height: _boxHeight
     color: "lightgreen"
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            // TODO: Add clicked event/signal
-        }
-    }
-
     // Name
     Text {
         id: frameName

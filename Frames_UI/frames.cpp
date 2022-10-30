@@ -77,7 +77,7 @@ bool Frames::parseJson(const QJsonObject &json)
     // If it has a sub-group, parse them and append it to the list recursively
     QJsonArray subgroups = json.value("subgroups").toArray();
     for (const auto &&frameJson : subgroups) {
-        Frames *new_frame = new Frames(this);
+        Frames *new_frame = new Frames(this, this);
         QJsonObject frameObject = frameJson.toObject();
         new_frame->parseJson(frameObject);
         _subgroups.append(new_frame);
@@ -92,6 +92,10 @@ void Frames::print_info(QString prefix) const
 
     // Required values
     str.append(QString("name: %1, type: %2 | ").arg(_name, QString::number((int)_type)));
+
+    // Debug
+//    qulonglong p = (qulonglong)_parentFrame;
+//    str.append(QString("parentFrame address: %1 | ").arg(p));
 
     // Non-required values
     if (!_description.isEmpty()) {

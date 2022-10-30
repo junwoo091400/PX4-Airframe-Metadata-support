@@ -25,7 +25,7 @@ public:
     QQmlListProperty<QObject> content();
 
     int rowCount(const QModelIndex &p) const;
-    QVariant data(const QModelIndex &index, int role) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QHash<int, QByteArray> roleNames() const;
 
     int count() const;
