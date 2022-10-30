@@ -49,9 +49,19 @@ bool Frames::parseJson(const QJsonObject &json)
         _description = description;
     }
 
-    QString image = json.value("image").toString();
-    if (!image.isNull()) {
-        _imageUrl = image;
+    QString imageEnum = json.value("image").toString();
+    if (!imageEnum.isNull()) {
+        _imageEnum = imageEnum;
+    }
+
+    QString imageCustom = json.value("image-custom").toString();
+    if (!imageCustom.isNull()) {
+        _imageUrl = imageCustom;
+    }
+
+    if (_imageUrl.isEmpty()) {
+        // We dont' have a custom
+
     }
 
     QString url = json.value("url").toString();

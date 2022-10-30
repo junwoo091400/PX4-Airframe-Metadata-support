@@ -78,10 +78,10 @@ private:
     // Required properties
     FrameType _type{FrameType::FrameUndefined};
     QString _name;
-
-    // Required for Frame group (that holds many different sub-frames)
-    QList<Frames*> _subgroups;
     int _frame_id{FRAME_ID_UNDEFINED};
+
+    // Subgroup that holds many different sub-frames
+    QList<Frames*> _subgroups;
 
     // Non-required properties
     QString _description;
