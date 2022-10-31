@@ -93,6 +93,16 @@ bool Frames::parseJson(const QJsonObject &json)
 
     }
 
+    // Frame ID: required only for end nodes
+    if (_type == FrameType::FrameEndNode) {
+        QJsonValue frameID = json.value("frame_id");
+        if (!frameID.isNull()) {
+            _frame_id = frameID.toInt(FRAME_ID_UNDEFINED);
+        } else {
+            qWarning() << "Frame ID not set!" << json;
+        }
+    }
+
     // Non-required properties
     QString description = json.value("description").toString();
     if (!description.isEmpty()) {
@@ -144,6 +154,11 @@ void Frames::print_info(QString prefix) const
 
     // Required values
     str.append(QString("name: %1, type: %2 | ").arg(_name, QString::number((int)_type)));
+
+    if (_type == FrameType::FrameEndNode) {
+        // Frame ID is required only for end nodes
+        str.append(QString("frame ID: %1 | ").arg(QString::number(_frame_id)));
+    }
 
     // Debug
 //    qulonglong p = (qulonglong)_parentFrame;

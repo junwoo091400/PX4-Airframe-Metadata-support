@@ -28,18 +28,27 @@ Window {
         color: "lightblue"
     }
 
-    Text {
-        id: framesParamName
-        text: frameComponent.frames_id_param_name
-    }
+    // Toolbar / Debug console
+    Row {
+        id: toolbar
+        width: parent.width; height: _boxHeight / 4 // Hacky
 
-    Button {
-        id: gotoParentButton
-        anchors.left: framesParamName.right
+        Text {
+            id: framesParamName
+            text: frameComponent.frames_id_param_name
+        }
 
-        text: "Go to parent"
-        onClicked: {
-            frameComponent.gotoParentFrame();
+        Button {
+            id: gotoParentButton
+            text: "Go to parent"
+            onClicked: {
+                frameComponent.gotoParentFrame();
+            }
+        }
+
+        Text {
+            id: finalSelectedFrameID
+            text: frameComponent.finalSelectionFrameID
         }
     }
 
@@ -47,7 +56,7 @@ Window {
     Flow {
         id: framesCollageView
         width: parent.width
-        anchors.top: framesParamName.bottom
+        anchors.top: toolbar.bottom
         spacing: _boxSpacing
 
         Repeater {
@@ -70,6 +79,7 @@ Window {
             Frame {
                 id: frameId
                 frame: modelData
+                selected: frame.frame_id == frameComponent.finalSelectionFrameID
 
 //                NumberAnimation {
 //                    id: framesAnimation

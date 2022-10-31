@@ -18,7 +18,8 @@ enum class FrameType {
     FrameEndNode = 2        // End-mode
 };
 
-static constexpr int FRAME_ID_UNDEFINED = -1;
+static constexpr int FRAME_ID_INVALID = -2; // Used for storing intial value of selected final Frame ID in FrameComponent
+static constexpr int FRAME_ID_UNDEFINED = -1; // Used for a Frame Group's ID
 
 static const QString FRAME_IMEAGES_PATH = ":/images/";
 static const QString FRAME_UNKNOWN_NAME = "AirframeUnknown";

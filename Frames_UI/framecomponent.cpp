@@ -93,14 +93,19 @@ void FrameComponent::setSelectedFrames(QList<Frames*> frames)
 bool FrameComponent::selectFrame(Frames *frame)
 {
     qDebug() << "selectFrame() called: " << frame;
+
     // Show available options in the selected frame group
     if (!frame->_subgroups.isEmpty()) {
         setSelectedFrames(frame->_subgroups);
-        //_selectedFrames->setDataDirect(frame->_subgroups);
     }
 
-    // User selected a final frame with no subgroups
-    // TODO: Process final selection
+    // User selected the end-node, select this item as final selection
+    if (frame->_type == FrameType::FrameEndNode) {
+        _finalSelectionFrameID = frame->_frame_id;
+        qDebug() << "Setting final Selection Frame ID to: " << _finalSelectionFrameID;
+        emit finalSelectionFrameIDChanged();
+    }
+
     return true;
 }
 

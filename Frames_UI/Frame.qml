@@ -6,9 +6,10 @@ import QtQuick 2.15
 Rectangle {
     id: frameView
     property var frame // Frame* pointer we are referencing to
+    property bool selected: false // Defines whether this frame is selected by the user (if it is an End node)
 
     width: _boxWidth; height: _boxHeight
-    color: "lightgreen"
+    color: selected ? "red" : "lightgreen"
 
     // Name
     Text {

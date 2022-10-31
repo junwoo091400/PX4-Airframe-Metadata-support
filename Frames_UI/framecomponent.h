@@ -20,6 +20,7 @@ class FrameComponent : public Frames
 
     Q_PROPERTY(DataObjectModel* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
     Q_PROPERTY(QString frames_id_param_name READ frames_id_param_name NOTIFY frames_id_param_name_changed)
+    Q_PROPERTY(int finalSelectionFrameID READ finalSelectionFrameID NOTIFY finalSelectionFrameIDChanged)
 
 public:
     FrameComponent(QObject *parent = nullptr);
@@ -66,6 +67,11 @@ public:
     void setSelectedFrames(QList<Frames*> frames);
 
     /**
+     * @brief Getter for the last user selected Frame Endnode's Frame ID
+     */
+    int finalSelectionFrameID() { return _finalSelectionFrameID; } const
+
+    /**
      * @brief Getter for the parameter name corresponding to the Frame ID
      */
     QString frames_id_param_name() const { return _frames_id_param_name; }
@@ -90,6 +96,7 @@ public:
 signals:
      void selectedFramesChanged();
      void frames_id_param_name_changed();
+     void finalSelectionFrameIDChanged();
 
 private:
 //    /**
@@ -102,8 +109,12 @@ private:
      */
     DataObjectModel* _selectedFrames = new DataObjectModel(this);
 
+    // Data from JSON
     int _schema_version{0};
     QString _frames_id_param_name;
+
+    // Variables for run time processing
+    int _finalSelectionFrameID{FRAME_ID_INVALID}; // Holds Frame ID of the last selected EndNode frame from the user
 };
 
 #endif // FRAMECOMPONENT_H
