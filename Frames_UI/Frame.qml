@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
 
 // Qml definition of a single Frame/group view
 // It will display the `Frames*` object
@@ -9,7 +10,7 @@ Rectangle {
     property var frame // Frame* pointer we are referencing to
     property bool selected: false // Defines whether this frame is selected by the user (if it is an End node)
     width: _boxWidth; height: _boxHeight
-    color: "#00000000" // Transparent
+    color: frame.isEndNode ? "#00000000" : "#20000000" // Transparent if End-node
 
     // Main Column
     ColumnLayout {
@@ -41,13 +42,14 @@ Rectangle {
 
             ColumnLayout {
                 id: frameColumnLayout
+                spacing: 0
                 anchors.fill: parent
 
                 // Image
                 Rectangle {
                     color: "#20FFFFFF" // Tinted semi-trasnparent bright background
                     Layout.fillWidth: true
-                    Layout.preferredHeight: parent.height * 0.8
+                    Layout.preferredHeight: parent.height * 0.7
 
                     Image {
                         id: frameImage
@@ -71,6 +73,41 @@ Rectangle {
                         font.pointSize: _defaultFontPointSize
                         wrapMode: Text.WordWrap
                         text: frame.description
+                    }
+                }
+
+                // Manufacturer
+                Rectangle {
+                    color: "#20FFFFFF" // Tinted semi-trasnparent bright background
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: parent.height * 0.05
+
+                    Text {
+                        id: frameManufacturer
+                        anchors.fill: parent
+//                        anchors.margins: _boxSpacing // Have some margins for description
+                        font.pointSize: _defaultFontPointSize
+                        wrapMode: Text.WordWrap
+                        text: frame.manufacturer
+                    }
+                }
+
+                // URL
+                Rectangle {
+                    color: "#20FFFFFF" // Tinted semi-trasnparent bright background
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: parent.height * 0.05
+
+                    Label {
+                        id: frameUrl
+                        anchors.fill: parent
+                        font.pointSize: _defaultFontPointSize
+                        text: "<a href='" + frame.product_url + "'>" + "link to product</a>"
+                        color: "blue"
+                        onLinkActivated: {
+                            console.log("Trying to open: " + frame.product_url)
+                            Qt.openUrlExternally(frame.product_url)
+                        }
                     }
                 }
             }

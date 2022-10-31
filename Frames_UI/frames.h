@@ -38,6 +38,9 @@ class Frames : public QObject
     Q_PROPERTY(QString manufacturer READ getManufacturer NOTIFY manufacturerChanged)
     Q_PROPERTY(QString product_url READ getProducturl NOTIFY producturlChanged)
 
+    // Properties for helping QML rendering
+    Q_PROPERTY(bool isEndNode READ getIsEndNode NOTIFY isEndNodeChanged)
+
 public:
     /**
      * @brief Constructor
@@ -67,6 +70,11 @@ public:
     QString getManufacturer() { return _manufacturer; }
     QString getProducturl() { return _productUrl; }
 
+    /**
+     * @brief If the Frme is the end node (has no subgroups), return true
+     */
+    bool getIsEndNode() { return (_type == FrameType::FrameEndNode); }
+
 signals:
     void nameChanged();
     void frameidChanged();
@@ -74,6 +82,7 @@ signals:
     void descriptionChanged();
     void manufacturerChanged();
     void producturlChanged();
+    void isEndNodeChanged();
 
 private:
     /**
