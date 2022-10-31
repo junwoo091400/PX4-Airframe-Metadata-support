@@ -46,7 +46,5 @@
         <file>images/QuadRotor.svg</file>
         <file>images/Simulation.svg</file>
         <file>images/VTOL.svg</file>
-        <file>images/VTOLQuadrotorTailsitter.svg</file>
-        <file>images/VTOLTiltrotor.svg</file>
     </qresource>
 </RCC>
