@@ -2,7 +2,6 @@
 #define FRAMECOMPONENT_H
 
 #include <QObject>
-#include <qqml.h>
 #include <QAbstractListModel>
 #include <QModelIndex>
 
@@ -22,11 +21,30 @@ class FrameComponent : public Frames
     Q_PROPERTY(DataObjectModel* selectedFrames READ selectedFrames NOTIFY selectedFramesChanged)
     Q_PROPERTY(QString frames_id_param_name READ frames_id_param_name NOTIFY frames_id_param_name_changed)
 
-    // Make this class available in QML
-    QML_NAMED_ELEMENT(FrameComponent)
-
 public:
     FrameComponent(QObject *parent = nullptr);
+
+    /**
+     * @brief singleton type provider function (callback)
+     *
+     * This is used for registering `FrameComponent` as a Singleton Type
+     **/
+    static QObject *framecomponent_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
+    {
+        Q_UNUSED(engine)
+        Q_UNUSED(scriptEngine)
+
+        if (_frameCompSingleton == nullptr) {
+            _frameCompSingleton = new FrameComponent(engine);
+        }
+
+        return _frameCompSingleton;
+    }
+
+    /**
+     * @brief Singleton instance of the Frame Component
+     */
+    static FrameComponent *frameComponentSingleton() { return _frameCompSingleton; }
 
     /**
      * @brief Parse provided JsonDocument data struct
@@ -63,6 +81,11 @@ public:
      * @brief Changes `_selectedFrames` to track parent frame group (if it exists)
      */
     Q_INVOKABLE bool gotoParentFrame();
+
+//protected:
+    // Singleton pointer
+    // Note: Isn't it a bad practice to place singleton as mutable public member?
+    static FrameComponent *_frameCompSingleton;
 
 signals:
      void selectedFramesChanged();

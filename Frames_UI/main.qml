@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
-import FrameComponent 1.0
+import Junwoo.framecomp 1.0
 
 Window {
     id: mainPage
@@ -18,11 +18,8 @@ Window {
     property real _boxHeight: _defaultFontPixelHeight * 15
     property real _boxSpacing: _defaultFontPixelWidth
 
-    // Module that has objectified json data
-    FrameComponent {
-        id: frameComponent
-        objectName: "frameComponent"
-    }
+    // Reference the Singleton
+    property var frameComponent: FrameComponent
 
     // Background Color
     Rectangle {
@@ -74,19 +71,19 @@ Window {
                 id: frameId
                 frame: modelData
 
-                NumberAnimation {
-                    id: framesAnimation
-                    target: frameId
-                    property: "x"
-                    duration: 1000
-                    to: 0; from: framesCollageView.width
-                    easing.type: Easing.InOutQuad
-                }
+//                NumberAnimation {
+//                    id: framesAnimation
+//                    target: frameId
+//                    property: "x"
+//                    duration: 1000
+//                    to: 0; from: framesCollageView.width
+//                    easing.type: Easing.InOutQuad
+//                }
 
-                Component.onCompleted: {
-                    framesAnimation.running = true
-                    console.log('Component.onCompleted called!')
-                }
+//                Component.onCompleted: {
+//                    framesAnimation.running = true
+//                    console.log('Component.onCompleted called!')
+//                }
 
                 MouseArea {
                     anchors.fill: parent

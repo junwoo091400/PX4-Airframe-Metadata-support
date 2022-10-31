@@ -3,6 +3,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
+// Singleton pointer initialization
+FrameComponent* FrameComponent::_frameCompSingleton = nullptr;
+
 FrameComponent::FrameComponent(QObject *parent)
     :Frames(parent, nullptr)
 {
