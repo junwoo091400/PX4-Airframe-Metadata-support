@@ -81,7 +81,7 @@ private:
      * @param String of the image
      * @param fallback Used for finding Unknown Frame, if we can't even find the unknown frame file, we fallback to this url
      */
-    QString getImageUrlFromName(const QString imageName, const QString fallback = nullptr);
+    QString getImageUrlFromName(const QString imageName, const QString fallback = QString());
 
     /**
      * @brief Goes up the parent tree structure to find latest viable image URL to display

@@ -14,8 +14,8 @@ Window {
     property real _defaultFontPointSize: 10
     property real _defaultFontPixelWidth: 10
     property real _defaultFontPixelHeight: 10
-    property real _boxWidth: _defaultFontPixelWidth * 20
-    property real _boxHeight: _defaultFontPixelHeight * 15
+    property real _boxWidth: _defaultFontPixelWidth * 30
+    property real _boxHeight: _defaultFontPixelHeight * 25
     property real _boxSpacing: _defaultFontPixelWidth
 
     // Reference the Singleton

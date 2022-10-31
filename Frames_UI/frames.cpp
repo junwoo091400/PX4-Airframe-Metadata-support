@@ -41,8 +41,10 @@ QString Frames::getImageUrlFromName(const QString imageName, const QString fallb
         }
     }
 
-    if (fallback != nullptr) {
+    if (!fallback.isNull()) {
+//        qDebug() << "Fallback is: " << fallback << ", with size: " << fallback.size();
         return fallback;
+
     } else {
         // No image found, *try to return undefined UFO image, and fallback if not found
         return getImageUrlFromName(FRAME_UNKNOWN_NAME, "");
@@ -112,13 +114,14 @@ bool Frames::parseJson(const QJsonObject &json)
     QString imageEnum = json.value("image").toString();
     if (!imageEnum.isEmpty()) {
         _imageEnum = imageEnum;
-        _imageUrl = getImageUrlFromName(_imageEnum);
+        _imageUrl = getImageUrlFromName(_imageEnum, "");
     }
 
     QString imageCustom = json.value("image-custom").toString();
     if (!imageCustom.isEmpty()) {
         // Override url set by imageEnum with a custom, if it exists
-        _imageUrl = getImageUrlFromName(imageCustom);
+        _imageUrl = getImageUrlFromName(imageCustom, "");
+//        qDebug() << "imageCustomUrl fetched: " << _imageUrl << ", name: " << _name << ", customUrl was: " << imageCustom;
     }
 
     if (_imageUrl.isEmpty()) {
