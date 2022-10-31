@@ -57,8 +57,36 @@ Window {
             id: framesRepeater
             model: frameComponent.selectedFrames
 
+//            onModelChanged: {
+//                framesAnimation.running = true
+//                console.log('onModelChanged called!')
+//            }
+
+//            Connections {
+//                target: frameComponent
+//                function onSelectedFramesChanged() {
+//                    framesAnimation.running = true
+//                    console.log('onModelChanged called!')
+//                }
+//            }
+
             Frame {
+                id: frameId
                 frame: modelData
+
+                NumberAnimation {
+                    id: framesAnimation
+                    target: frameId
+                    property: "x"
+                    duration: 1000
+                    to: 0; from: framesCollageView.width
+                    easing.type: Easing.InOutQuad
+                }
+
+                Component.onCompleted: {
+                    framesAnimation.running = true
+                    console.log('Component.onCompleted called!')
+                }
 
                 MouseArea {
                     anchors.fill: parent
