@@ -28,7 +28,7 @@ Rectangle {
 
         Image {
             id: frameImage
-            source: "images/Airship.svg"
+            source: frame.image_url
             anchors {
                 margins: 5
                 top: parent.top

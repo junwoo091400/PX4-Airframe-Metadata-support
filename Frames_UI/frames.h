@@ -20,6 +20,9 @@ enum class FrameType {
 
 static constexpr int FRAME_ID_UNDEFINED = -1;
 
+static const QString FRAME_IMEAGES_PATH = ":/images/";
+static const QString FRAME_UNKNOWN_NAME = "AirframeUnknown";
+
 class Frames : public QObject
 {
     Q_OBJECT
@@ -72,6 +75,18 @@ signals:
     void producturlChanged();
 
 private:
+    /**
+     * @brief Finds the vehicle image from the resources with the matching name
+     * @param String of the image
+     * @param fallback Used for finding Unknown Frame, if we can't even find the unknown frame file, we fallback to this url
+     */
+    QString getImageUrlFromName(const QString imageName, const QString fallback = nullptr);
+
+    /**
+     * @brief Goes up the parent tree structure to find latest viable image URL to display
+     */
+    QString findClosestParentImageUrl() const;
+
     // Parent Frames node
     Frames *_parentFrame{nullptr};
 
