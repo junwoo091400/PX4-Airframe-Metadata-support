@@ -69,7 +69,7 @@ Rectangle {
                     Image {
                         id: frameImage
                         anchors.fill: parent
-//                        anchors.margins: _boxSpacing // Have some margins for image
+                        anchors.margins: _boxSpacing // Have some margins for image
                         source: frame.image_url
                         fillMode: Image.PreserveAspectFit
                     }
@@ -93,7 +93,7 @@ Rectangle {
 
                 Row {
                     id: frameBottomRow
-                    spacing: _boxSpacing
+                    spacing: 0
                     width: parent.width
                     height: parent.height * 0.1
 
@@ -102,7 +102,8 @@ Rectangle {
                         color: "#20FFFFFF" // Tinted semi-trasnparent bright background
 //                        width: parent.width * 0.5
                         height: parent.height
-                        width: frameManufacturer.implicitWidth
+//                        width: frameManufacturer.implicitWidth
+                        width: parent.width * 0.5
 
                         Text {
                             id: frameManufacturer
@@ -118,15 +119,16 @@ Rectangle {
                     // URL
                     Rectangle {
                         color: "#20FFFFFF" // Tinted semi-trasnparent bright background
-//                        width: parent.width
                         height: parent.height
-                        width: frameUrl.implicitWidth
+//                        width: frameUrl.implicitWidth
+                        width: parent.width * 0.5
 
                         Label {
                             id: frameUrl
                             anchors.fill: parent
                             font.pointSize: _defaultFontPointSize
                             text: "<a href='" + frame.product_url + "'>" + "link to product</a>"
+                            visible: frame.product_url ? true : false
                             color: "blue"
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter

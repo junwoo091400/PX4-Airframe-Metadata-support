@@ -81,23 +81,18 @@ Window {
                 frame: modelData
                 selected: frame.frame_id == frameComponent.finalSelectionFrameID
 
-//                // Click border (don't include the last row)
+                // Click border (don't include the last row)
 //                MouseArea {
 //                    id: mouseArea
-////                    anchors.fill: parent
-//                    anchors {
-//                        top: parent.top
-//                        bottom: parent.bottom//frameBottomRow.top
-//                        left: parent.left
-//                        right: parent.right
-//                    }
+//                    anchors.fill: parent
+////                    anchors {
+////                        top: parent.top
+////                        bottom: frameBottomRow.top
+////                        left: parent.left
+////                        right: parent.right
+////                    }
 
 //                    hoverEnabled: true
-//                    onContainsMouseChanged: {
-//                        console.log('Parent of main.qml at mouseArea')
-//                        console.log(parent)
-//                    }
-
 //                    onClicked: {
 //                        frameComponent.selectFrame(modelData)
 //                    }
