@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>frames.json</file>
-        <file>frames.schema.json</file>
         <file>images/AirframeComponentIcon.png</file>
         <file>images/AirframeUnknown.svg</file>
         <file>images/Airship.svg</file>
@@ -47,5 +45,7 @@
         <file>images/Simulation.svg</file>
         <file>images/VTOL.svg</file>
         <file>images/applied_aeronautics_albatross.gif</file>
+        <file>frames.json</file>
+        <file>frames.schema.json</file>
     </qresource>
 </RCC>
