@@ -46,5 +46,6 @@
         <file>images/QuadRotor.svg</file>
         <file>images/Simulation.svg</file>
         <file>images/VTOL.svg</file>
+        <file>images/applied_aeronautics_albatross.gif</file>
     </qresource>
 </RCC>
