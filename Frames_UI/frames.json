@@ -105,7 +105,7 @@
 							"type": "frame",
 							"description": "Generic flying wing with customizable set of actuators",
 							"manufacturer": "",
-							"image": "FixedWingFlyingWing",
+                                                        "image-custom": "FixedWingFlyingWing",
 							"url": "",
 							"frame_id": 1426
 						},
@@ -113,8 +113,8 @@
 							"name": "Wing wing (Z-84)",
 							"type": "frame",
 							"description": "Wing wing model",
-							"manufacturer": "Holybro",
-							"image": "FixedWingFlyingWing",
+                                                        "manufacturer": "E-flite",
+                                                        "image-custom": "eflite_wing_wing",
 							"url": "https://hobbyking.com/en_us/wing-wing-z-84-epo-845mm-kit.html?___store=en_us",
 							"frame_id": 1426
 						}

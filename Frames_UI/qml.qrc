@@ -47,5 +47,6 @@
         <file>images/applied_aeronautics_albatross.gif</file>
         <file>frames.json</file>
         <file>frames.schema.json</file>
+        <file>images/eflite_wing_wing.jpg</file>
     </qresource>
 </RCC>
