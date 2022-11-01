@@ -1,15 +1,27 @@
 # PX4 Frame metadata support test repository
 
-This repo will include:
+![Frames Selection Demo](Frames_CompMetadata_Demo.gif)
+
+This repo includes
 1. Test Qt App for visualization of the Frame selection UI for QGC
 2. Test Frame Json dataset to visualize
+
+Details about this project can also be found in this document: https://docs.google.com/document/d/1wpGDQyJLv3AHAqMH-vxWuZ1HYksX7oq_vldEXCbxmPI/edit#
+
+## Pull Requests from this Project
+
+- MAVLink: https://github.com/mavlink/mavlink/pull/1908
+- 
 
 ## How to use
 
 ### Frame JSON Metadata
-- Install https://www.npmjs.com/package/ajv-cli
+
+Install https://www.npmjs.com/package/ajv-cli
+
 ```bash
 # To validate the Json Schema
+cd Frames_UI
 ajv validate -s frames.schema.json -d frames.json --verbose
 ```
 ## About Frame metadata
