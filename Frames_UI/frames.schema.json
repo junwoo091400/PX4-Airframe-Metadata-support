@@ -44,11 +44,11 @@
                 },
                 "image": {
                     "$ref": "#/$defs/imageTypes",
-                    "description": "Generic enum value to show an appropriate frame image. If empty, GCS should use the last valid `image` property of parent nodes"
+                    "description": "Generic enum value (non GCS specific) representing the frame image. GCS needs to map the value to an appropriate iamge resource. If empty, GCS should use the `image` property in the parent node. If no valid image can be found in parent node, it should show `Undefined` frame image"
                 },
                 "image-custom": {
                     "type": "string",
-                    "description": "Custom image url to load. This will override the image indicated by the `image` property. If it's an invalid link, GCS should use `iamge` tag"
+                    "description": "Name of the custom image to load. GCS should have a mechanism to map the string to the appropriate image resource. So compatability with GCS is not guaranteed. It overrides the `image` property if valid"
                 },
                 "manufacturer": {
                     "type": "string",
