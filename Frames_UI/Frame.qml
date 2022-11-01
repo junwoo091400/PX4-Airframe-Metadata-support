@@ -77,7 +77,7 @@ Rectangle {
 
                 // Description
                 Rectangle {
-                    color: "#20FFFFFF" // Tinted semi-trasnparent bright background
+                    color: "#80FFFFFF" // Tinted semi-trasnparent bright background
                     width: parent.width
                     height: parent.height * 0.2
 
@@ -99,7 +99,7 @@ Rectangle {
 
                     // Manufacturer
                     Rectangle {
-                        color: "#20FFFFFF" // Tinted semi-trasnparent bright background
+                        color: "#90FFFFFF" // Tinted semi-trasnparent bright background
 //                        width: parent.width * 0.5
                         height: parent.height
 //                        width: frameManufacturer.implicitWidth
@@ -118,7 +118,7 @@ Rectangle {
 
                     // URL
                     Rectangle {
-                        color: "#20FFFFFF" // Tinted semi-trasnparent bright background
+                        color: "#90FFFFFF" // Tinted semi-trasnparent bright background
                         height: parent.height
 //                        width: frameUrl.implicitWidth
                         width: parent.width * 0.5
