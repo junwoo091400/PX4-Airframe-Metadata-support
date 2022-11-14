@@ -58,9 +58,10 @@
                     "type": "string",
                     "description": "Link to the relevant material online about the frame"
                 },
-                "frame_id": {
-                    "type": "integer",
-                    "description": "ID of the frame"
+                "frame_parameter_values": {
+                    "type": "array",
+                    "description": "Values to set for parameters defined in `frame_parameters` settings to make frame selection come into effect",
+                    "minItems": 1
                 },
                 "subgroups": {
                     "type": "array",
@@ -75,11 +76,12 @@
                 "properties": { "type": { "const": "group" } }
             },
             "then": {
+                "description": "For group types, subgroups must be provided",
                 "required": ["subgroups"]
             },
             "else": {
-                "description": "For frame types, frame_id must be provided",
-                "required": ["frame_id"]
+                "description": "For frame types, frame_parameter_values must be provided",
+                "required": ["frame_parameter_values"]
             },
 
             "required": ["type", "name"],
@@ -97,9 +99,12 @@
             "type": "object",
             "description": "Common settings",
             "properties": {
-                "frame_id_parameter": {
-                    "description": "Parameter name matching the Frame ID",
-                    "type": "string"
+                "frame_parameters": {
+                    "description": "Parameters needed to set & apply the Frame selection changes",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },
