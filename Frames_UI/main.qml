@@ -50,6 +50,10 @@ Window {
             id: finalSelectedFrameID
             text: frameComponent.finalSelectionFrameID
         }
+
+        JustABox {
+            id: justABoxHaha
+        }
     }
 
     // Frames collage view

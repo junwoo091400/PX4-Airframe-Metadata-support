@@ -48,5 +48,6 @@
         <file>frames.json</file>
         <file>frames.schema.json</file>
         <file>images/eflite_wing_wing.jpg</file>
+        <file>JustABox.qml</file>
     </qresource>
 </RCC>
